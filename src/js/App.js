@@ -2,24 +2,34 @@ import React, {Component} from 'react';
 
 import cardData from './services/cardData'
 
-import './App.css';
-
+import Header from './components/header'
+import QuestionBlock from './components/questionBlock'
+import AnswerBlock from './components/answerBlock'
 export default class App extends Component {
   state = {
-    level: 0
-  }
-  say = () => {
-    const audio = new Audio(process.env.PUBLIC_URL + `/audio/${cardData[0][0].name}.mp3`);
-    audio.play();
+    level: 0,
+    currentTrack: 1
   }
 
+  onNextLevel = () => {
+    if(this.state.level === 5){
+      this.setState({level: 0})
+    } else {
+      this.setState({level: this.state.level += 1})
+    }
+  }
 
   render () {
-    return (
-      <div>
-        <button onClick={this.say}>fsdfsfsf</button>
-        <img src={process.env.PUBLIC_URL + `/image/${cardData[0][0].name}.jpg`} alt="logo" />
+    const {level} = this.state;
 
+    return (
+      <div className='wrapper'>
+        <Header level = {level}/>
+        <QuestionBlock level = {level}/>
+        <AnswerBlock 
+          level = {level}
+          onNextLevel = {this.onNextLevel}
+        />
       </div>
     );
   }

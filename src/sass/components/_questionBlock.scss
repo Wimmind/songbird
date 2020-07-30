@@ -1,0 +1,24 @@
+.questionBlock-container {
+    width: 100%;
+    padding: 10px;
+    background-color: $brown;
+    border-radius: 15px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.questionBlock-image {
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.player {
+    width: calc(100% - 200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &>audio {
+        width: 600px;
+    }
+}

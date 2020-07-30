@@ -1,0 +1,28 @@
+.answerBlock-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.answerBlock-item {
+    width: 500px;
+    border: solid 1px $yellow;
+}
+
+.options {
+    color: $yellow;
+    display: flex;
+    flex-direction: column;
+    &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        border: solid 1px $yellow;
+    }
+}
+
+.nextLevel {
+    width: 100%;
+    height: 50px;
+}

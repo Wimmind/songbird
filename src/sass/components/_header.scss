@@ -1,0 +1,30 @@
+.header-container {
+    color: $light;
+    margin-bottom: 50px;
+}
+
+.header-panel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.sections {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+}
+
+.sections-item {
+    border: solid 1px $light;
+    flex-grow: 1;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $yellow;
+}
