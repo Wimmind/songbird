@@ -12,6 +12,19 @@
     margin-bottom: 15px;
 }
 
+
+.header-logo {
+    font-family: 'Chaos';
+    text-transform: uppercase;
+    user-select: none;
+    letter-spacing: 3px;
+    font-size: 60px;
+    &>span{
+        font-family: 'Chaos';
+        color: $yellow
+    }
+}
+
 .sections {
     display: flex;
     align-items: center;
@@ -27,4 +40,7 @@
     align-items: center;
     justify-content: center;
     background-color: $yellow;
+    &_active {
+        background-color: #d4c243;
+    }
 }

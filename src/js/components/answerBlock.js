@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import cardData from '../services/cardData'
-
+import TrackInfo from './trackInfo'
 export default class AnswerBlock extends Component {
     state = {
         
@@ -11,7 +11,10 @@ export default class AnswerBlock extends Component {
     render () {
         const {
             level,
-            onNextLevel
+            onNextLevel,
+            checkAnswer,
+            infoTrackId,
+            startGameLevel
         } = this.props;
 
         return (
@@ -22,13 +25,14 @@ export default class AnswerBlock extends Component {
                         <ul 
                             key={i.toString()+'g'}
                             className='options-item'
+                            onClick = {()=>checkAnswer(item.id)}
                         >
                             {item.name}
                         </ul>
                     ))}
                 </li>
-                <div className='answerBlock-item'>
-
+                <div className='answerBlock-item track-info'>
+                    {startGameLevel ? <TrackInfo infoTrackId = {infoTrackId} level = {level}/> : 'Прослушайте запись и отгадайте мелодию'}
                 </div>
             </div>
             <button 

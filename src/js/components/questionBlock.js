@@ -1,29 +1,31 @@
 import React, {Component} from 'react';
 
 import cardData from '../services/cardData'
-
+import disk from '../../assets/image/vinil.jpg'
 export default class QuestionBlock extends Component {
   state = {
     
   }
 
-
-
   render () {
-    const {level} = this.props;
+    const {
+      level,
+      trackGuessed,
+      currentTrackId
+    } = this.props;
 
     return (
       <div className='questionBlock-container'>
         <img 
-            src={process.env.PUBLIC_URL + `/image/${cardData[level][0].name}.jpg`} 
+            src={trackGuessed ? process.env.PUBLIC_URL + `/image/${cardData[level][currentTrackId-1].name}.jpg` : disk} 
             alt="плакат" 
             width={200}
             height={160}
             className='questionBlock-image'
         />
         <div className='player'>
-            <h2>******</h2>
-            <audio controls src={process.env.PUBLIC_URL + `/audio/${cardData[level][0].name}.mp3`}></audio>
+        <h2>{trackGuessed ? cardData[level][currentTrackId-1].name : '******'}</h2>
+            <audio controls src={process.env.PUBLIC_URL + `/audio/${cardData[level][currentTrackId-1].name}.mp3`}></audio>
         </div>
       </div>
     );
