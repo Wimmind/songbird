@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import AudioPlayer from 'react-h5-audio-player';
 import cardData from '../services/cardData'
 
 export default class TrackInfo extends Component {
@@ -7,10 +8,15 @@ export default class TrackInfo extends Component {
         
     }
 
+    onPauseOtherPlayer = () =>{
+        this.props.refQuestionPlayer.current.audio.current.pause();
+    }
+
     render () {
         const {
             level,
             infoTrackId,
+            refInfoPlayer,
         } = this.props;
 
         return (
@@ -21,15 +27,20 @@ export default class TrackInfo extends Component {
                         alt="плакат" 
                         width={200}
                         height={160}
-                        className='questionBlock-image'
+                        className='track-info-group_image'
                     />
-                    <div>
-                        <p>{cardData[level][infoTrackId-1].name}</p>
-                        <p>{cardData[level][infoTrackId-1].year}</p>
-                        <audio controls src={process.env.PUBLIC_URL + `/audio/${cardData[level][infoTrackId-1].name}.mp3`}></audio>
+                    <div className='track-info-group-titles'>
+                        <p className='track-info-group_name'>{cardData[level][infoTrackId-1].name}</p>
+                        <p className='track-info-group_year'>год: {cardData[level][infoTrackId-1].year}</p>
                     </div>
                 </div>
-                <p>{cardData[level][infoTrackId-1].description}</p>
+                <AudioPlayer
+                    onPlay={this.onPauseOtherPlayer}
+                    ref = {refInfoPlayer}
+                    autoPlayAfterSrcChange = {false}
+                    src={process.env.PUBLIC_URL + `/audio/${cardData[level][infoTrackId-1].name}.mp3`}
+                />
+                <p className='track-info-description'>{cardData[level][infoTrackId-1].description}</p>
             </div>
         );
     }

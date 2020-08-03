@@ -15,6 +15,16 @@ button {
     cursor: pointer;
 }
 
+button, 
+button:active, 
+button:focus,
+textarea:active,
+textarea:focus,
+input:active,
+input:focus {
+    outline: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -23,6 +33,9 @@ a {
     max-width: $content-width;
     margin: 0 auto;
     padding: 20px;
+    @include media-laptop {
+        max-width: $tablet-width;
+    }
 }
 
 .answerBlocks {

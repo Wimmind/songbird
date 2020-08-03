@@ -1,0 +1,103 @@
+.player {
+    width: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    & h2 {
+        font-size: 28px;
+        margin-bottom: 16px;
+        color: $light;
+        @include media-laptop {
+            font-size: 24px;
+        }
+        @include media-mobile {
+            font-size: 18px;
+        }
+    }
+    padding: 10px 15px;
+    @include media-tablet {
+        width: 100%;
+    }
+}
+
+
+.rhap_main {
+    flex-direction: row-reverse;
+    align-items: center;
+    @include media-mobile {
+        margin-bottom: 20px;
+    }
+}
+
+.rhap_container {
+    outline: none;
+    padding: 10px 0 0;
+    background: none;
+    box-shadow: none;
+    border-top: 1px solid $grey;
+}
+
+.rhap_volume-bar-area {
+    outline: none;
+}
+
+.rhap_progress-container {
+    outline: none;
+}
+
+.rhap_play-pause-button,
+.rhap_volume_button {
+    color: $yellow;
+}
+
+.rhap_download-progress,
+.rhap_volume-bar{
+    background-color: $grey;
+}
+
+.rhap_volume-indicator {
+    background-color: $yellow;
+}
+
+.rhap_progress {
+    &-bar {
+        height: 4px;
+    }
+    &-indicator {
+        width: 16px;
+        height: 16px;
+    }
+    &-filled {
+        background-color: $yellow;
+    }
+}
+
+.rhap_additional-controls,
+.rhap_rewind-button,
+.rhap_forward-button {
+    display: none;
+}
+
+.rhap_time {
+    color: $light;
+    font-size: 11px;
+}
+
+.rhap_stacked .rhap_controls-section {
+    margin: 0px;
+    flex: none;
+    margin-right: 40px;
+    @include media-mobile {
+        margin-right: 0px;
+        position: relative;
+    }
+}
+
+.rhap_volume-controls  {
+    flex: none;
+    width: 100px;
+    @include media-mobile {
+        position: absolute;
+        top: 47px;
+        left: 9px;
+    }
+}

@@ -8,7 +8,7 @@ export default class Header extends Component {
   }
 
   render () {
-    const {level} = this.props;
+    const {level,score} = this.props;
 
     const genres = ['Classics', 'Hip-hop', 'Pop', 'Rock', 'Eurodance', 'HARDCORE'];
 
@@ -19,7 +19,7 @@ export default class Header extends Component {
               song<span>quiz</span>
             </h1>
             <div className='score'>
-                Score: 0
+                Score: {score}
             </div>
         </div>
         <li className='sections'>

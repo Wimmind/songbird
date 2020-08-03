@@ -23,17 +23,22 @@
         font-family: 'Chaos';
         color: $yellow
     }
+    @include media-mobile {
+        font-size: 40px;
+    }
 }
 
 .sections {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 30px;
+    border-radius: 5px;
+    @include media-mobile {
+        flex-direction: column;
+    }
 }
 
 .sections-item {
-    border: solid 1px $light;
     flex-grow: 1;
     height: 35px;
     display: flex;
@@ -42,5 +47,12 @@
     background-color: $yellow;
     &_active {
         background-color: #d4c243;
+    }
+    font-size: 21px;
+    @include media-tablet {
+        font-size: 18px;
+    }
+    @include media-mobile {
+        width: 100%;
     }
 }

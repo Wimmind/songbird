@@ -1,17 +1,26 @@
 import React, {Component} from 'react';
 
+
 import cardData from '../services/cardData'
 import disk from '../../assets/image/vinil.jpg'
+import AudioPlayer from 'react-h5-audio-player';
 export default class QuestionBlock extends Component {
   state = {
     
+  }
+
+  onPauseOtherPlayer = () =>{
+      if (this.props.refInfoPlayer.current){
+        this.props.refInfoPlayer.current.audio.current.pause();
+      }
   }
 
   render () {
     const {
       level,
       trackGuessed,
-      currentTrackId
+      currentTrackId,
+      refQuestionPlayer,
     } = this.props;
 
     return (
@@ -25,7 +34,12 @@ export default class QuestionBlock extends Component {
         />
         <div className='player'>
         <h2>{trackGuessed ? cardData[level][currentTrackId-1].name : '******'}</h2>
-            <audio controls src={process.env.PUBLIC_URL + `/audio/${cardData[level][currentTrackId-1].name}.mp3`}></audio>
+        <AudioPlayer
+          onPlay={this.onPauseOtherPlayer}
+          ref={refQuestionPlayer}
+          autoPlayAfterSrcChange={false}
+          src={process.env.PUBLIC_URL + `/audio/${cardData[level][currentTrackId-1].name}.mp3`}
+        />
         </div>
       </div>
     );

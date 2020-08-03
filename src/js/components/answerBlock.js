@@ -14,8 +14,14 @@ export default class AnswerBlock extends Component {
             onNextLevel,
             checkAnswer,
             infoTrackId,
-            startGameLevel
+            trackGuessed,
+            showModalBlock,
+            indicatorsColorArray,
+            refQuestionPlayer,
+            refInfoPlayer
         } = this.props;
+
+        const buttonFunc = level === 5 ? showModalBlock : onNextLevel;
 
         return (
         <div>
@@ -27,17 +33,25 @@ export default class AnswerBlock extends Component {
                             className='options-item'
                             onClick = {()=>checkAnswer(item.id)}
                         >
+                            <span className={indicatorsColorArray[i] ? `answer-indicator ${indicatorsColorArray[i]}` : 'answer-indicator' }></span>
                             {item.name}
                         </ul>
                     ))}
                 </li>
                 <div className='answerBlock-item track-info'>
-                    {startGameLevel ? <TrackInfo infoTrackId = {infoTrackId} level = {level}/> : 'Прослушайте запись и отгадайте мелодию'}
+                    {
+                    infoTrackId ? 
+                        <TrackInfo 
+                            refInfoPlayer = {refInfoPlayer} 
+                            refQuestionPlayer={refQuestionPlayer} 
+                            infoTrackId = {infoTrackId} 
+                            level = {level}
+                        /> : 'Прослушайте запись и отгадайте мелодию'}
                 </div>
             </div>
             <button 
-                className='nextLevel'
-                onClick={onNextLevel}
+                className={trackGuessed ? 'next-level next-level_active' : 'next-level'}
+                onClick={trackGuessed ? buttonFunc : null}
             >
                 Next level
             </button>
