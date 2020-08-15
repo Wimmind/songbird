@@ -13,7 +13,7 @@ const audio = new Audio();
 export default class App extends Component {
   state = {
     level: 0,
-    currentTrackId: 1,
+    currentTrackId: null,
     trackGuessed: false,
     infoTrackId: null,
     score: 0,
@@ -26,14 +26,16 @@ export default class App extends Component {
   playerOfQuestionBlock = React.createRef();
   playerOfInfoBlock = React.createRef();
 
-  componentDidMount() {
-    this.makeQuestionTrack();
+  componentWillMount() {
+    const level = this.state.level;
+    this.makeQuestionTrack(level);
   }
 
-  makeQuestionTrack = () =>{
-    this.setState({currentLevelArray: cardData[this.state.level]});
-    const questionTrackId = Math.floor(Math.random() * cardData[this.state.level].length) + 1;
+  makeQuestionTrack = (level) =>{
+    this.setState({currentLevelArray: cardData[level]});
+    const questionTrackId = Math.floor(Math.random() * cardData[level].length) + 1;
     this.setState({currentTrackId:questionTrackId})
+    console.log(`Correct answer: ${cardData[level][questionTrackId-1].name}`)
   }
 
   checkAnswer = (id) => {
@@ -82,15 +84,16 @@ export default class App extends Component {
   }
 
   onNextLevel = () => {
+    let level;
     if(this.state.level === 5){
-      this.setState({level: 0})
+      level = 0;
       this.setState({score: 0})
     } else {
-      this.setState({level: this.state.level + 1})
+      level = this.state.level + 1;
     }
+    this.setState({level: level})
     this.setState({trackGuessed: false})
-    this.setState({startGameLevel : false})
-    this.makeQuestionTrack();
+    this.makeQuestionTrack(level);
     this.setState({currentScoreLevel: 5})
     this.setState({infoTrackId: null})
     this.setState({modalHidden: true})
@@ -117,29 +120,31 @@ export default class App extends Component {
     return (
       <div className='wrapper'>
         <Header level = {level} score={score}/>
-        <QuestionBlock
-         level = {level}
-         currentTrackId = {currentTrackId}
-         trackGuessed = {trackGuessed}
-         refQuestionPlayer = {this.playerOfQuestionBlock}
-         refInfoPlayer = {this.playerOfInfoBlock}
-         />
-        <AnswerBlock 
-          refQuestionPlayer = {this.playerOfQuestionBlock}
-          refInfoPlayer = {this.playerOfInfoBlock}
-          trackGuessed = {trackGuessed}
-          level = {level}
-          onNextLevel = {this.onNextLevel}
-          checkAnswer = {this.checkAnswer}
-          infoTrackId = {infoTrackId}
-          showModalBlock = {this.showModalBlock}
-          indicatorsColorArray = {indicatorsColorArray}
-        />
-        <ModalBlock 
+        {modalHidden ? 
+          <>
+            <QuestionBlock
+              level = {level}
+              currentTrackId = {currentTrackId}
+              trackGuessed = {trackGuessed}
+              refQuestionPlayer = {this.playerOfQuestionBlock}
+              refInfoPlayer = {this.playerOfInfoBlock} />
+            <AnswerBlock 
+              refQuestionPlayer = {this.playerOfQuestionBlock}
+              refInfoPlayer = {this.playerOfInfoBlock}
+              trackGuessed = {trackGuessed}
+              level = {level}
+              onNextLevel = {this.onNextLevel}
+              checkAnswer = {this.checkAnswer}
+              infoTrackId = {infoTrackId}
+              showModalBlock = {this.showModalBlock}
+              indicatorsColorArray = {indicatorsColorArray}/>
+          </>
+         : 
+         <ModalBlock 
           modalHidden={modalHidden} 
           score={score}
-          onNextLevel = {this.onNextLevel}
-        />
+          onNextLevel = {this.onNextLevel}/>
+        }
       </div>
     );
   }

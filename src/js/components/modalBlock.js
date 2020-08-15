@@ -15,16 +15,12 @@ export default class ModalBlock extends Component {
             onNextLevel
         } = this.props;
 
-        let modalBlock = 'score-block';
-        let fadeBlock = 'fade-block';
+       let modalBlock = 'score-block';
+        //let fadeBlock = 'fade-block';
 
-        if (modalHidden){
-            modalBlock += ' hidden';
-            fadeBlock += ' hidden'
-          }
 
         return (
-        <div className={fadeBlock}>
+        
             <div className={modalBlock}>
                 <p>Score: {score}/30</p>
                 {score === 30 ? <Сongratulation/> : <TryAgainMessage/>}
@@ -32,7 +28,7 @@ export default class ModalBlock extends Component {
                     Try again
                 </button>
             </div>
-        </div>
+        
         );
     }
 }

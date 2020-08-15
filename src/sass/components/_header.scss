@@ -32,7 +32,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 5px;
     @include media-mobile {
         flex-direction: column;
     }
@@ -45,6 +44,7 @@
     align-items: center;
     justify-content: center;
     background-color: $yellow;
+    border-radius: 5px;
     &_active {
         background-color: #d4c243;
     }

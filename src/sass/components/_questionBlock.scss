@@ -11,7 +11,7 @@
 }
 
 .questionBlock-image {
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 15px;
     margin-right: 30px;
     @include media-tablet {

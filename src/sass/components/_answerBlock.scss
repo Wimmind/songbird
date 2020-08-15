@@ -67,6 +67,7 @@
     background-color: $background;
     color: $light;
     font-size: 25px;
+    transition: 0.3s;
     &_active {
         background-color: $yellow;
     }

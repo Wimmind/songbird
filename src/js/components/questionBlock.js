@@ -29,7 +29,7 @@ export default class QuestionBlock extends Component {
             src={trackGuessed ? process.env.PUBLIC_URL + `/image/${cardData[level][currentTrackId-1].name}.jpg` : disk} 
             alt="плакат" 
             width={200}
-            height={160}
+            height={180}
             className='questionBlock-image'
         />
         <div className='player'>

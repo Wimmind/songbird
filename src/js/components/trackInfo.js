@@ -26,7 +26,7 @@ export default class TrackInfo extends Component {
                         src={process.env.PUBLIC_URL + `/image/${cardData[level][infoTrackId-1].name}.jpg`} 
                         alt="плакат" 
                         width={200}
-                        height={160}
+                        height={180}
                         className='track-info-group_image'
                     />
                     <div className='track-info-group-titles'>
