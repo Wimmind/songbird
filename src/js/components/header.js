@@ -8,7 +8,7 @@ export default class Header extends Component {
   }
 
   render () {
-    const {level,score} = this.props;
+    const {level,score,modalHidden} = this.props;
 
     const genres = ['Classics', 'Hip-hop', 'Pop', 'Rock', 'Eurodance', 'HARDCORE'];
 
@@ -26,7 +26,7 @@ export default class Header extends Component {
             {genres.map((item,i)=>(
                 <ul 
                     key={i.toString()+'g'}
-                    className={i===level ?'sections-item sections-item_active': 'sections-item' }
+                    className={i===level && modalHidden ?'sections-item sections-item_active': 'sections-item' }
                 >
                     {item}
                 </ul>

@@ -9,7 +9,6 @@ import ModalBlock from './components/modalBlock'
 import errorAudio from '../assets/audio/error.mp3'
 import successAudio from '../assets/audio/success.mp3'
 
-const audio = new Audio();
 export default class App extends Component {
   state = {
     level: 0,
@@ -69,6 +68,7 @@ export default class App extends Component {
   }
 
   playClickResult = (src) => {
+    const audio = new Audio();
     audio.src = src;
     audio.play();
   };
@@ -119,35 +119,35 @@ export default class App extends Component {
 
     return (
       <div className='wrapper'>
-        <Header level = {level} score={score}/>
+        <Header level = {level} score={score} modalHidden={modalHidden}/>
         {modalHidden ? 
           <>
-            <QuestionBlock
-              level = {level}
-              currentTrackId = {currentTrackId}
-              trackGuessed = {trackGuessed}
-              refQuestionPlayer = {this.playerOfQuestionBlock}
-              refInfoPlayer = {this.playerOfInfoBlock} />
-            <AnswerBlock 
-              refQuestionPlayer = {this.playerOfQuestionBlock}
-              refInfoPlayer = {this.playerOfInfoBlock}
-              trackGuessed = {trackGuessed}
-              level = {level}
-              onNextLevel = {this.onNextLevel}
-              checkAnswer = {this.checkAnswer}
-              infoTrackId = {infoTrackId}
-              showModalBlock = {this.showModalBlock}
-              indicatorsColorArray = {indicatorsColorArray}/>
-          </>
-         : 
-         <ModalBlock 
-          modalHidden={modalHidden} 
-          score={score}
-          onNextLevel = {this.onNextLevel}/>
+          <QuestionBlock
+            level = {level}
+            currentTrackId = {currentTrackId}
+            trackGuessed = {trackGuessed}
+            refQuestionPlayer = {this.playerOfQuestionBlock}
+            refInfoPlayer = {this.playerOfInfoBlock} />
+          <AnswerBlock 
+            refQuestionPlayer = {this.playerOfQuestionBlock}
+            refInfoPlayer = {this.playerOfInfoBlock}
+            trackGuessed = {trackGuessed}
+            level = {level}
+            onNextLevel = {this.onNextLevel}
+            checkAnswer = {this.checkAnswer}
+            infoTrackId = {infoTrackId}
+            showModalBlock = {this.showModalBlock}
+            indicatorsColorArray = {indicatorsColorArray}/>
+          </>: 
+          <ModalBlock 
+            modalHidden={modalHidden} 
+            score={score}
+            onNextLevel = {this.onNextLevel}/>
         }
       </div>
     );
   }
 }
+
 
 

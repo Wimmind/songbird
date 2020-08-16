@@ -3,49 +3,36 @@ import React, {Component} from 'react';
 import congratulationImage from '../../assets/image/meloman.jpg'
 
 export default class ModalBlock extends Component {
-    state = {
-        
-    }
 
- 
     render () {
         const {
             score,
-            modalHidden,
             onNextLevel
         } = this.props;
 
-       let modalBlock = 'score-block';
-        //let fadeBlock = 'fade-block';
-
-
         return (
-        
-            <div className={modalBlock}>
-                <p>Score: {score}/30</p>
-                {score === 30 ? <Сongratulation/> : <TryAgainMessage/>}
+            <div className='score-block'>
+                <h2 className='score-block_title'>Поздравляем!</h2>
+                {score === 30 ? <Сongratulation /> : <TryAgainMessage score={score}/>}
                 <button onClick={onNextLevel}>
-                    Try again
+                    Попробовать сыграть еще раз
                 </button>
             </div>
-        
         );
     }
 }
 
-const TryAgainMessage = () => {
+const TryAgainMessage = ({score}) => {
     return (
-        <>
-            <p>Попробуйте сыграть еще раз</p>
-        </>
+        <p>Вы прошли викторину и набрали {score} из 30 возможных баллов</p>
     )
 }
 
 const Сongratulation = () => {
     return (
         <>
-            <p>Ураа вы настоящий меломан!!!</p>
-            <img src={congratulationImage}></img>
+            <p>Вы настоящий меломан!!! Вы набрали максимальное колличество баллов!</p>
+            <img src={congratulationImage} alt="winner img" ></img>
         </>
     )
 }
