@@ -3,11 +3,6 @@ import React, {Component} from 'react';
 import cardData from '../services/cardData'
 import TrackInfo from './trackInfo'
 export default class AnswerBlock extends Component {
-    state = {
-        
-    }
-
- 
     render () {
         const {
             level,

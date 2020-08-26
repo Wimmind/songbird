@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    height: 360px;
+    height: 370px;
     @include media-laptop {
         flex-direction: column;
         height: 100%;

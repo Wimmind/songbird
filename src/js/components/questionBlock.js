@@ -5,9 +5,6 @@ import cardData from '../services/cardData'
 import disk from '../../assets/image/vinil.jpg'
 import AudioPlayer from 'react-h5-audio-player';
 export default class QuestionBlock extends Component {
-  state = {
-    
-  }
 
   onPauseOtherPlayer = () =>{
       if (this.props.refInfoPlayer.current){
@@ -28,7 +25,7 @@ export default class QuestionBlock extends Component {
         <img 
             src={trackGuessed ? process.env.PUBLIC_URL + `/image/${cardData[level][currentTrackId-1].name}.jpg` : disk} 
             alt="плакат" 
-            width={200}
+            width={190}
             height={180}
             className='questionBlock-image'
         />

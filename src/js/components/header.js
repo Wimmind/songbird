@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 
-
-//<img src={process.env.PUBLIC_URL + `/songbird.png`} className='header-logo' alt="logo" />
 export default class Header extends Component {
-  state = {
-    
-  }
-
   render () {
     const {level,score,modalHidden} = this.props;
 

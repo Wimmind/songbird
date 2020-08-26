@@ -4,9 +4,6 @@ import AudioPlayer from 'react-h5-audio-player';
 import cardData from '../services/cardData'
 
 export default class TrackInfo extends Component {
-    state = {
-        
-    }
 
     onPauseOtherPlayer = () =>{
         this.props.refQuestionPlayer.current.audio.current.pause();
