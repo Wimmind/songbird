@@ -16,16 +16,16 @@ export default class Header extends Component {
                 Score: {score}
             </div>
         </div>
-        <li className='sections'>
+        <ul className='sections'>
             {genres.map((item,i)=>(
-                <ul 
+                <li 
                     key={i.toString()+'g'}
                     className={i===level && modalHidden ?'sections-item sections-item_active': 'sections-item' }
                 >
                     {item}
-                </ul>
+                </li>
             ))}
-        </li>
+        </ul>
       </div>
     );
   }

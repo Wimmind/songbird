@@ -21,18 +21,18 @@ export default class AnswerBlock extends Component {
         return (
         <div>
             <div className='answerBlock-container'>
-                <li className='options answerBlock-item'>
+                <ul className='options answerBlock-item'>
                     {cardData[level].map((item,i)=>(
-                        <ul 
+                        <li 
                             key={i.toString()+'g'}
                             className='options-item'
                             onClick = {()=>checkAnswer(item.id)}
                         >
                             <span className={indicatorsColorArray[i] ? `answer-indicator ${indicatorsColorArray[i]}` : 'answer-indicator' }></span>
                             {item.name}
-                        </ul>
+                        </li>
                     ))}
-                </li>
+                </ul>
                 <div className='answerBlock-item track-info'>
                     {
                     infoTrackId ? 
