@@ -1,0 +1,31 @@
+.track-info-group {
+    display: flex;
+    margin-bottom: 10px;
+    &-titles {
+        width: 100%;
+    }
+    &_name{
+        padding: 5px 0;
+        font-size: 19px;
+    }
+    &_year {
+        padding: 10px 0px;
+        border-top: 1px solid $grey;
+        border-bottom: 1px solid $grey;
+    }
+    &_image {
+        object-fit: cover;
+        border-radius: 15px;
+        margin-right: 30px;
+        @include media-mobile {
+            margin: 0 auto;
+        }
+    }
+    @include media-mobile {
+        flex-direction: column;
+    }
+}
+
+.track-info-description {
+    font-size: 13px;
+}

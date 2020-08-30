@@ -1,0 +1,20 @@
+.questionBlock-container {
+    width: 100%;
+    padding: 10px;
+    background-color: $background;
+    border-radius: 5px;
+    display: flex;
+    margin-bottom: 50px;
+    @include media-tablet {
+        flex-direction: column;
+    }
+}
+
+.questionBlock-image {
+    object-fit: cover;
+    border-radius: 15px;
+    margin-right: 30px;
+    @include media-tablet {
+        margin: 0 auto;
+    }
+}
